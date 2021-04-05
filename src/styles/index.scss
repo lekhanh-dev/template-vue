@@ -1,2 +1,35 @@
 @import "./modules/";
 @import "./reset";
+@import "./variable";
+@import "./mixin";
+
+html {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.ff-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.ff-source-san-pro {
+  font-family: "Source-san-pro", sans-serif;
+}
+
+@include createClass(bg, $background-color, background-color);
+@include createClass(text, $text-color, color);

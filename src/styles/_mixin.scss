@@ -1,0 +1,11 @@
+@import "./modules/mixins";
+
+@mixin createClass($prefix, $map, $properties-name) {
+  $keys: map-keys($map);
+  @each $key in $keys {
+    .#{$prefix}-#{$key} {
+      #{$properties-name}: map-get($map, $key);
+      //   @debug #{$prefix}-#{$key};
+    }
+  }
+}

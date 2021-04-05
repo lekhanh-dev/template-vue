@@ -1,0 +1,28 @@
+@import "./modules/variable";
+
+$text-color: (
+  "white": #fff,
+  "white-medium": #f4f6f7,
+  "blue-light": #00bcd4,
+  "green-light": #b0de79,
+  "spring-green": #7ee0bf,
+  "medium-purple": #a289e8,
+  "grey": #93a2ae,
+  "grey-light": #d8dadb,
+  "dark": #3c3950,
+  "black": black,
+);
+
+$background-color: (
+  "white": #fff,
+  "white-medium": #f4f6f7,
+  "blue": #00bcd4,
+  "blue-light": #00bcd4,
+  "blue-violet": #a289e8,
+  "caribbean-green": #7ee0bf,
+  "green": #aed581,
+  "grey-light": #d8dadb,
+  "grey": #414352,
+  "dark": #393b51,
+  "black": #181828,
+);

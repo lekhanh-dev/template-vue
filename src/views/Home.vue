@@ -1,10 +1,16 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <comp-header />
+    <div></div>
+  </div>
 </template>
 
 <script>
-import "../styles/index.scss";
+import CompHeader from "../components/CompHeader.vue";
 export default {
   name: "Home",
+  components: {
+    CompHeader,
+  },
 };
 </script>
