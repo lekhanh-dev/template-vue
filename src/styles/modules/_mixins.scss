@@ -1,0 +1,39 @@
+@use "sass:map";
+
+@mixin media($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin makeClass($list-variable) {
+  @each $variable in $list-variable {
+    $values: map-get($variable, "values");
+    $prefix: map-get($variable, "prefix");
+    $properties-name: map-get($variable, "properties-name");
+
+    @each $key, $value in $values {
+      .#{$prefix}-#{$key} {
+        #{$properties-name}: #{$value};
+      }
+    }
+  }
+}
+
+@mixin makeClassResponsive($list-variable) {
+  @each $screen-name, $width in $breakpoint {
+    @include media($width) {
+      @each $variable in $list-variable {
+        $values: map-get($variable, "values");
+        $prefix: map-get($variable, "prefix");
+        $properties-name: map-get($variable, "properties-name");
+
+        @each $key, $value in $values {
+          .#{$prefix}-#{$screen-name}-#{$key} {
+            #{$properties-name}: #{$value};
+          }
+        }
+      }
+    }
+  }
+}

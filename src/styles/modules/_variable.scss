@@ -1,0 +1,113 @@
+$font-weight: (
+  "values": (
+    "light": 300,
+    "medium": 500,
+    "bold": 700,
+  ),
+  "prefix": "font-weight",
+  "properties-name": font-weight,
+);
+
+$border-rounded: (
+  "values": (
+    "low": 5px,
+    "circle": 50%,
+    "high": 1000px,
+  ),
+  "prefix": "border-rounded",
+  "properties-name": border-radius,
+);
+
+$position: (
+  "values": (
+    "relative": relative,
+    "absolute": absolute,
+    "fixed": fixed,
+    "sticky": sticky,
+  ),
+  "prefix": "pos",
+  "properties-name": position,
+);
+
+$display: (
+  "values": (
+    "block": block,
+    "i-block": inline-block,
+    "inline": inline,
+    "flex": flex,
+    "grid": grid,
+    "none": none,
+  ),
+  "prefix": "d",
+  "properties-name": display,
+);
+
+$justify-content: (
+  "values": (
+    "flex-start": flex-start,
+    "flex-end": flex-end,
+    "center": center,
+    "space-between": space-between,
+    "space-around": space-around,
+    "space-evenly": space-evenly,
+  ),
+  "prefix": "flex-jus-c",
+  "properties-name": justify-content,
+);
+
+$align-item: (
+  "values": (
+    "stretch": stretch,
+    "center": center,
+    "flex-start": flex-start,
+    "flex-end": flex-end,
+    "baseline": baseline,
+  ),
+  "prefix": "flex-align-i",
+  "properties-name": align-items,
+);
+
+$align-content: (
+  "values": (
+    "stretch": stretch,
+    "center": center,
+    "flex-start": flex-start,
+    "flex-end": flex-end,
+    "space-between": space-between,
+    "space-around": space-around,
+    "space-evenly": space-evenly,
+  ),
+  "prefix": "flex-align-c",
+  "properties-name": align-content,
+);
+
+$flex-direction: (
+  "values": (
+    "column": column,
+    "column-reverse": column-reverse,
+    "row": row,
+    "row-reverse": row-reverse,
+  ),
+  "prefix": "flex-dir",
+  "properties-name": flex-direction,
+);
+
+$flex-wrap: (
+  "values": (
+    "wrap": wrap,
+    "wrap-reverse": wrap-reverse,
+    "nowrap": nowrap,
+  ),
+  "prefix": "flex",
+  "properties-name": flex-wrap,
+);
+
+$breakpoint: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+);
+
+$list-variable: $font-weight, $border-rounded, $position, $display,
+  $justify-content, $align-item, $align-content, $flex-direction, $flex-wrap;
