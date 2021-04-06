@@ -148,20 +148,22 @@
                 />
               </div>
               <div class="menu__search"><i class="fas fa-search"></i></div>
-              <div class="menu__cart d-flex">
-                <img
-                  src="../assets/img/cart.png"
-                  alt="cart"
-                  width="18px"
-                  height="15px"
-                />
-                <div class="triangle-left-icon"></div>
-                <div
-                  class="menu__counter d-flex flex-align-i-center text-white bg-blue-light"
-                >
-                  <span class="pos-relative">200</span>
+              <router-link to="/my-cart">
+                <div class="menu__cart d-flex">
+                  <img
+                    src="../assets/img/cart.png"
+                    alt="cart"
+                    width="18px"
+                    height="15px"
+                  />
+                  <div class="triangle-left-icon"></div>
+                  <div
+                    class="menu__counter d-flex flex-align-i-center text-white bg-blue-light"
+                  >
+                    <span class="pos-relative">{{ numProductInCart }}</span>
+                  </div>
                 </div>
-              </div>
+              </router-link>
             </div>
           </nav>
         </div>
@@ -184,5 +186,10 @@ import "../styles/components/CompHeader.scss";
 
 export default {
   name: "comp-header",
+  computed: {
+    numProductInCart() {
+      return this.$store.state.cart.length;
+    },
+  },
 };
 </script>

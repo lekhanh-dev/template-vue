@@ -1,0 +1,19 @@
+@import "../../variable";
+@import "../../mixin";
+@import "./CompCart.scss";
+
+.item {
+  height: 100px;
+  border-bottom: 1px solid #c9c9c9;
+  .image {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+  }
+  .name {
+    align-self: flex-start;
+    margin-top: 20px;
+    font-size: 20px;
+    color: tomato;
+  }
+}
