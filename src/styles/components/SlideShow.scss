@@ -4,7 +4,11 @@
 .slide-show {
   .container {
     padding: 0;
+    @include media(map-get($breakpoint, "xl")) {
+      padding: 0 20px;
+    }
   }
+
   button {
     top: 50%;
     transform: translateY(-50%);

@@ -1,0 +1,53 @@
+@import "../variable";
+@import "../mixin";
+
+.feature {
+  padding: 30px 0;
+  &__list-item {
+    @include media(map-get($breakpoint, "lg")) {
+      padding-left: -42px;
+    }
+  }
+
+  &__item {
+    padding-bottom: 20px;
+    @include media(map-get($breakpoint, "lg")) {
+      flex: 0 0 50%;
+      padding-right: 42px;
+    }
+    @include media(map-get($breakpoint, "xl")) {
+      flex: 33.33%;
+    }
+  }
+
+  &__title {
+    & > h1 {
+      font-size: 24px;
+      width: 60%;
+      line-height: 1.5;
+    }
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  &__content {
+    margin-top: 25px;
+    width: 70%;
+    line-height: 1.5;
+  }
+
+  &__action {
+    margin-top: 50px;
+    & > button {
+      width: 147px;
+      height: 30px;
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
