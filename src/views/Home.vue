@@ -13,6 +13,7 @@
     <comp-advertisement />
     <open-vacancies />
     <contact-us />
+    <section class="empty bg-dark pos-relative"></section>
     <comp-footer />
   </div>
 </template>
@@ -53,3 +54,27 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.empty {
+  width: 100%;
+  padding-top: 23.75%;
+  &::before,
+  &::after {
+    content: "";
+    width: 50%;
+    height: 100%;
+    background: aqua;
+    position: absolute;
+    top: 0;
+  }
+  &::after {
+    right: 0;
+    border-top-left-radius: 40px;
+  }
+  &::before {
+    left: 0;
+    border-top-right-radius: 40px;
+  }
+}
+</style>
