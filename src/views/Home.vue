@@ -9,6 +9,7 @@
     <our-case-study />
     <core-competence />
     <pricing-table />
+    <contact-us />
     <comp-footer />
   </div>
 </template>
@@ -24,6 +25,7 @@ import FullWidth from "../components/FullWidth.vue";
 import OurCaseStudy from "../components/OurCaseStudy.vue";
 import CoreCompetence from "../components/CoreCompetence.vue";
 import PricingTable from "../components/PricingTable.vue";
+import ContactUs from "../components/ContactUs.vue";
 
 export default {
   name: "Home",
@@ -38,6 +40,7 @@ export default {
     OurCaseStudy,
     CoreCompetence,
     PricingTable,
+    ContactUs,
   },
 };
 </script>

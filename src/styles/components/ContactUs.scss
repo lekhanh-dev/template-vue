@@ -1,0 +1,40 @@
+@import "../variable";
+@import "../mixin";
+
+.contact-us {
+  padding: 50px 0;
+  @include media(map-get($breakpoint, "sm")) {
+    padding: 129px 0 113px 0;
+  }
+  &__list-item {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  &__item {
+    flex: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    @include media(map-get($breakpoint, "sm")) {
+      flex: 50%;
+    }
+    @include media(map-get($breakpoint, "lg")) {
+      flex: 33.33%;
+    }
+    @include media(map-get($breakpoint, "xl")) {
+      flex: 25%;
+      margin-bottom: 40px;
+    }
+    h1 {
+      padding-bottom: 30px;
+      font-size: 19px;
+    }
+    p {
+      padding-bottom: 10px;
+    }
+  }
+  &__img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 30px;
+  }
+}
