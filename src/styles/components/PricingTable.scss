@@ -1,0 +1,206 @@
+@import "../variable";
+@import "../mixin";
+
+.pricing-table {
+  text-align: center;
+  padding: 40px 0;
+  @include media(map-get($breakpoint, "sm")) {
+    padding: 128px 0 150px 0;
+  }
+  &__header {
+    font-size: 27px;
+    padding-bottom: 30px;
+    @include media(map-get($breakpoint, "sm")) {
+      font-size: 50px;
+      padding-bottom: 80px;
+    }
+  }
+  &__list-item {
+    flex-wrap: wrap;
+    justify-content: center;
+    @include media(map-get($breakpoint, "lg")) {
+      padding-top: 127px;
+    }
+    @include media(map-get($breakpoint, "sm")) {
+      flex-wrap: wrap;
+      margin: 0 20px;
+      padding: 0;
+    }
+  }
+
+  &__icon-new {
+    left: 36px;
+    width: 50px;
+    height: 50px;
+    font-size: 12px;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  &__icon-triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid map-get($text-color, "white");
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    padding-right: 6px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  &__item {
+    flex: 100%;
+    margin-top: 26px;
+    &-title {
+      font-size: 24px;
+      padding: 30px 0;
+      border-left: 1px solid map-get($text-color, "grey-light");
+      border-top: 1px solid map-get($text-color, "grey-light");
+      span {
+        font-size: 16px;
+      }
+    }
+    &-number {
+      font-size: 65px;
+      padding: 29px 0;
+      span {
+        font-size: 16px;
+        padding-top: 8px;
+      }
+    }
+
+    ul {
+      padding-top: 30px;
+      border-left: 1px solid map-get($text-color, "grey-light");
+      li {
+        padding: 20px 0 15px 0;
+        border-bottom: 1px solid map-get($text-color, "grey-light");
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+
+    &-order {
+      padding: 35px 0 50px 0;
+      border-left: 1px solid map-get($text-color, "grey-light");
+      border-bottom: 1px solid map-get($text-color, "grey-light");
+      button {
+        padding: 12px 24px;
+        background: #393d50;
+      }
+    }
+
+    &:last-child {
+      .pricing-table__item-title,
+      ul,
+      .pricing-table__item-order {
+        border-right: 1px solid map-get($text-color, "grey-light");
+      }
+    }
+
+    &:nth-child(1) {
+      .pricing-table__item-title {
+        border-right: 1px solid #dfe5e8;
+      }
+      ul {
+        border-right: 1px solid #dfe5e8;
+      }
+
+      .pricing-table__item-order {
+        border-right: 1px solid #dfe5e8;
+      }
+      @include media(map-get($breakpoint, sm)) {
+        .pricing-table__item-title {
+          border-right: none;
+        }
+        ul {
+          border-right: none;
+        }
+
+        .pricing-table__item-order {
+          border-right: none;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .pricing-table__item-title {
+        border-right: 1px solid #dfe5e8;
+      }
+      ul {
+        border-right: 1px solid #dfe5e8;
+      }
+
+      .pricing-table__item-order {
+        border-right: 1px solid #dfe5e8;
+      }
+      @include media(map-get($breakpoint, md)) {
+        .pricing-table__item-title {
+          border-right: none;
+        }
+        ul {
+          border-right: none;
+        }
+
+        .pricing-table__item-order {
+          border-right: none;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      margin-top: 34px;
+      .pricing-table__item-title {
+        padding-top: 40px;
+        border-right: 1px solid #dfe5e8;
+        @include media(map-get($breakpoint, "lg")) {
+          border-right: none;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          border-right: 1px solid map-get($text-color, "grey-light");
+          height: 100%;
+          right: -1px;
+          top: -1px;
+        }
+      }
+      .pricing-table__item-order {
+        padding-bottom: 75px;
+        &::before {
+          content: "";
+          position: absolute;
+          border-right: 1px solid map-get($text-color, "grey-light");
+          height: 100%;
+          right: -1px;
+          bottom: -1px;
+        }
+        @include media(map-get($breakpoint, "lg")) {
+          border-right: 1px solid #dfe5e8;
+        }
+      }
+      button {
+        background: map-get($background-color, "blue-light");
+      }
+
+      & > ul {
+        @include media(map-get($breakpoint, "lg")) {
+          border-right: 1px solid #dfe5e8;
+        }
+      }
+    }
+
+    @include media(map-get($breakpoint, "sm")) {
+      flex: 50%;
+      margin-top: 60px;
+    }
+    @include media(map-get($breakpoint, "md")) {
+      flex: 0 0 33.33%;
+    }
+    @include media(map-get($breakpoint, "lg")) {
+      flex: 25%;
+      margin-bottom: 50px;
+    }
+  }
+}

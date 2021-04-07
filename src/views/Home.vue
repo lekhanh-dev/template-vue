@@ -8,6 +8,7 @@
     <full-width />
     <our-case-study />
     <core-competence />
+    <pricing-table />
     <comp-footer />
   </div>
 </template>
@@ -22,6 +23,7 @@ import WhyChooseUs from "../components/WhyChooseUs.vue";
 import FullWidth from "../components/FullWidth.vue";
 import OurCaseStudy from "../components/OurCaseStudy.vue";
 import CoreCompetence from "../components/CoreCompetence.vue";
+import PricingTable from "../components/PricingTable.vue";
 
 export default {
   name: "Home",
@@ -35,6 +37,7 @@ export default {
     FullWidth,
     OurCaseStudy,
     CoreCompetence,
+    PricingTable,
   },
 };
 </script>
