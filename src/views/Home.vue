@@ -7,6 +7,7 @@
     <why-choose-us />
     <full-width />
     <our-case-study />
+    <core-competence />
     <comp-footer />
   </div>
 </template>
@@ -20,6 +21,8 @@ import BlockCounter from "../components/BlockCounter.vue";
 import WhyChooseUs from "../components/WhyChooseUs.vue";
 import FullWidth from "../components/FullWidth.vue";
 import OurCaseStudy from "../components/OurCaseStudy.vue";
+import CoreCompetence from "../components/CoreCompetence.vue";
+
 export default {
   name: "Home",
   components: {
@@ -31,6 +34,7 @@ export default {
     WhyChooseUs,
     FullWidth,
     OurCaseStudy,
+    CoreCompetence,
   },
 };
 </script>
