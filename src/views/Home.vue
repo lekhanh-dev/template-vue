@@ -4,6 +4,7 @@
     <slide-show />
     <comp-feature />
     <block-counter />
+    <why-choose-us />
     <comp-footer />
   </div>
 </template>
@@ -14,6 +15,7 @@ import CompFooter from "../components/CompFooter.vue";
 import SlideShow from "../components/SlideShow.vue";
 import CompFeature from "../components/CompFeature.vue";
 import BlockCounter from "../components/BlockCounter.vue";
+import WhyChooseUs from "../components/WhyChooseUs.vue";
 export default {
   name: "Home",
   components: {
@@ -22,6 +24,7 @@ export default {
     SlideShow,
     CompFeature,
     BlockCounter,
+    WhyChooseUs,
   },
 };
 </script>

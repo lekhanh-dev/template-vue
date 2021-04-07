@@ -1,0 +1,56 @@
+@import "../variable";
+@import "../mixin";
+
+.why-choose-us {
+  padding-top: 60px;
+  padding-bottom: 20px;
+  @include media(map-get($breakpoint, "sm")) {
+    padding-top: 115px;
+    padding-bottom: 55px;
+  }
+  &__header {
+    text-align: center;
+    padding-bottom: 40px;
+    font-size: 27px;
+    @include media(map-get($breakpoint, "sm")) {
+      font-size: 50px;
+    }
+  }
+
+  &__list-item {
+    @include media(map-get($breakpoint, "lg")) {
+      margin-left: -42px;
+    }
+  }
+
+  &__item {
+    padding: 30px 0;
+    flex: 100%;
+    &:nth-child(-n + 3) {
+      @include media(map-get($breakpoint, "lg")) {
+        border-bottom: 1px solid map-get($text-color, "grey");
+      }
+    }
+    @include media(map-get($breakpoint, "lg")) {
+      margin-left: 42px;
+      flex: calc(33.33% - 42px);
+      padding: 60px 0 60px 0;
+    }
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 18px;
+  }
+
+  &__title {
+    font-size: 19px;
+  }
+
+  &__content {
+    margin-left: 68px;
+    padding-top: 20px;
+    line-height: 1.5;
+  }
+}
