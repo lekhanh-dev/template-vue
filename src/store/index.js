@@ -37,6 +37,18 @@ export default new Vuex.Store({
         name: "Iphone 16",
         price: 24000,
       },
+      {
+        id: 6,
+        image: "product4.png",
+        name: "Iphone 17",
+        price: 24000,
+      },
+      {
+        id: 7,
+        image: "product4.png",
+        name: "Iphone 18",
+        price: 24000,
+      },
     ],
     cart: [
       { idProduct: 1, num: 3 },
@@ -50,6 +62,9 @@ export default new Vuex.Store({
     },
     getPriceById: (state) => (id) => {
       return state.products.find((item) => item.id === id).price;
+    },
+    getAllProduct: (state) => {
+      return state.products;
     },
     getAllProductInCart: (state) => {
       let listProduct = [];
@@ -74,6 +89,14 @@ export default new Vuex.Store({
         product.num--;
       }
     },
+    addToCart(state, id) {
+      let product = state.cart.find((item) => item.idProduct === id);
+      if (product) {
+        alert("Product already have in cart");
+      } else {
+        state.cart.push({ idProduct: id, num: 1 });
+      }
+    },
     deleteInCart(state, listId) {
       listId.forEach((id) => {
         let index = state.cart.findIndex((item) => item.idProduct === id);
@@ -87,6 +110,9 @@ export default new Vuex.Store({
     },
     decrease({ commit }, id) {
       commit("decrease", id);
+    },
+    addToCart({ commit }, id) {
+      commit("addToCart", id);
     },
     deleteInCart({ commit }, listId) {
       commit("deleteInCart", listId);

@@ -1,0 +1,58 @@
+@import "../../variable";
+@import "../../mixin";
+
+.product-item {
+  flex: 100%;
+  box-shadow: 0px 0px 5px #c9c9c9;
+  margin-bottom: 20px;
+  margin-right: 0;
+  @include media(map-get($breakpoint, "sm")) {
+    flex: 0 0 calc(50% - 20px);
+    margin-left: 20px;
+  }
+
+  @include media(map-get($breakpoint, "md")) {
+    flex: 0 0 calc(33.33% - 20px);
+  }
+  @include media(map-get($breakpoint, "lg")) {
+    flex: 0 0 calc(25% - 20px);
+  }
+  @include media(map-get($breakpoint, "xl")) {
+    flex: 0 0 calc(20% - 20px);
+  }
+}
+
+.product-image {
+  padding: 20px 0;
+
+  img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+}
+
+.product-name {
+  padding: 10px;
+  font-size: 20px;
+  color: tomato;
+}
+
+.label {
+  padding: 10px;
+}
+
+.price {
+  color: rgb(182, 225, 66);
+  padding-top: 2px;
+}
+
+.btn-add {
+  padding: 10px 20px;
+  color: white;
+  background-color: tomato;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+}

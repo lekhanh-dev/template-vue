@@ -2,6 +2,7 @@
   <div class="home">
     <comp-header />
     <slide-show />
+    <list-product />
     <comp-feature />
     <block-counter />
     <why-choose-us />
@@ -26,6 +27,7 @@ import OurCaseStudy from "../components/OurCaseStudy.vue";
 import CoreCompetence from "../components/CoreCompetence.vue";
 import PricingTable from "../components/PricingTable.vue";
 import ContactUs from "../components/ContactUs.vue";
+import ListProduct from "../components/product/ListProduct.vue";
 
 export default {
   name: "Home",
@@ -41,6 +43,7 @@ export default {
     CoreCompetence,
     PricingTable,
     ContactUs,
+    ListProduct,
   },
 };
 </script>
