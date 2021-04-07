@@ -1,0 +1,43 @@
+@import "../variable";
+@import "../mixin";
+
+.full-width {
+  &__item {
+    flex: 100%;
+    padding: 20px;
+    @include media(map-get($breakpoint, "lg")) {
+      padding: 55px;
+      flex: 33.33%;
+    }
+    &:nth-child(3) .full-width__content {
+      color: map-get($text-color, "white");
+    }
+  }
+
+  &__number {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 40px;
+    @include media(map-get($breakpoint, "sm")) {
+      font-size: 80px;
+      padding: 60px 0;
+    }
+  }
+
+  &__title {
+    padding-bottom: 40px;
+    @include media(map-get($breakpoint, "sm")) {
+      font-size: 36px;
+    }
+    color: #ebf4e2;
+    span {
+      color: #e7ff89;
+    }
+  }
+
+  &__content {
+    font-size: 16px;
+    line-height: 1.5;
+    padding-bottom: 40px;
+  }
+}

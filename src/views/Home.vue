@@ -5,6 +5,7 @@
     <comp-feature />
     <block-counter />
     <why-choose-us />
+    <full-width />
     <comp-footer />
   </div>
 </template>
@@ -16,6 +17,7 @@ import SlideShow from "../components/SlideShow.vue";
 import CompFeature from "../components/CompFeature.vue";
 import BlockCounter from "../components/BlockCounter.vue";
 import WhyChooseUs from "../components/WhyChooseUs.vue";
+import FullWidth from "../components/FullWidth.vue";
 export default {
   name: "Home",
   components: {
@@ -25,6 +27,7 @@ export default {
     CompFeature,
     BlockCounter,
     WhyChooseUs,
+    FullWidth,
   },
 };
 </script>
