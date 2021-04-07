@@ -6,6 +6,7 @@
     <block-counter />
     <why-choose-us />
     <full-width />
+    <our-case-study />
     <comp-footer />
   </div>
 </template>
@@ -18,6 +19,7 @@ import CompFeature from "../components/CompFeature.vue";
 import BlockCounter from "../components/BlockCounter.vue";
 import WhyChooseUs from "../components/WhyChooseUs.vue";
 import FullWidth from "../components/FullWidth.vue";
+import OurCaseStudy from "../components/OurCaseStudy.vue";
 export default {
   name: "Home",
   components: {
@@ -28,6 +30,7 @@ export default {
     BlockCounter,
     WhyChooseUs,
     FullWidth,
+    OurCaseStudy,
   },
 };
 </script>
