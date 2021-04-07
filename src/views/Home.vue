@@ -10,6 +10,7 @@
     <our-case-study />
     <core-competence />
     <pricing-table />
+    <comp-advertisement />
     <contact-us />
     <comp-footer />
   </div>
@@ -28,6 +29,7 @@ import CoreCompetence from "../components/CoreCompetence.vue";
 import PricingTable from "../components/PricingTable.vue";
 import ContactUs from "../components/ContactUs.vue";
 import ListProduct from "../components/product/ListProduct.vue";
+import CompAdvertisement from "../components/CompAdvertisement.vue";
 
 export default {
   name: "Home",
@@ -44,6 +46,7 @@ export default {
     PricingTable,
     ContactUs,
     ListProduct,
+    CompAdvertisement,
   },
 };
 </script>
