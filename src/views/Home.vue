@@ -11,6 +11,7 @@
     <core-competence />
     <pricing-table />
     <comp-advertisement />
+    <open-vacancies />
     <contact-us />
     <comp-footer />
   </div>
@@ -30,6 +31,7 @@ import PricingTable from "../components/PricingTable.vue";
 import ContactUs from "../components/ContactUs.vue";
 import ListProduct from "../components/product/ListProduct.vue";
 import CompAdvertisement from "../components/CompAdvertisement.vue";
+import OpenVacancies from "../components/OpenVacancies.vue";
 
 export default {
   name: "Home",
@@ -47,6 +49,7 @@ export default {
     ContactUs,
     ListProduct,
     CompAdvertisement,
+    OpenVacancies,
   },
 };
 </script>

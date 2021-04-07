@@ -1,0 +1,146 @@
+@import "../variable";
+@import "../mixin";
+
+.open-vacancies {
+  padding: 50px 0;
+  @include media(map-get($breakpoint, "sm")) {
+    padding: 128px 0;
+  }
+  &__list-item {
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  &__item {
+    flex: 0 0 100%;
+    @include media(map-get($breakpoint, "lg")) {
+      &:nth-child(1) {
+        flex: 33.33%;
+      }
+      &:nth-child(2) {
+        flex: 66.66%;
+      }
+    }
+  }
+  &__title {
+    font-size: 24px;
+    padding-bottom: 48px;
+  }
+  &__our-team {
+    padding-right: 0;
+    @include media(map-get($breakpoint, "lg")) {
+      padding-right: 42px;
+    }
+    li {
+      padding: 40px 0;
+      margin-bottom: 25px;
+    }
+  }
+  &__person-box {
+    padding: 0 35px;
+  }
+  &__avatar {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    margin-right: 17px;
+  }
+  &__name {
+    font-size: 24px;
+    padding-bottom: 19px;
+  }
+  &__position {
+    font-size: 16px;
+    padding-bottom: 13px;
+  }
+  &__list-position {
+    li {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      width: 100%;
+      &:nth-child(1) {
+        border: 1px solid map-get($text-color, "grey-light");
+        padding: 18px 0;
+        cursor: none;
+      }
+      @include media(map-get($breakpoint, "md")) {
+        max-width: 160px;
+      }
+    }
+  }
+  &__position-content {
+    border: 1px solid map-get($text-color, "grey-light");
+    padding: 40px;
+    @include media(map-get($breakpoint, "md")) {
+      padding: 0;
+    }
+  }
+  &__position-image {
+    flex: 100%;
+    padding-top: 66.66%;
+    margin: 10px 30px 10px 30px;
+    align-self: baseline;
+    @include media(map-get($breakpoint, "md")) {
+      width: 50%;
+      padding-top: 45%;
+    }
+    img {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__position-detail {
+    flex: 100%;
+    padding: 0;
+    @include media(map-get($breakpoint, "md")) {
+      width: 50%;
+      margin: 0 30px;
+    }
+    h1 {
+      font-size: 19px;
+      padding-bottom: 30px;
+    }
+    p {
+      line-height: 1.8;
+    }
+  }
+  &__position-requirements {
+    padding-top: 20px;
+    @include media(map-get($breakpoint, "md")) {
+      margin: 30px;
+    }
+    li {
+      flex: 100%;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+      padding-left: 17px;
+      &::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: #00bcd4;
+        position: absolute;
+        top: 5px;
+        left: 0;
+      }
+      &:nth-child(2n) {
+        @include media(map-get($breakpoint, "md")) {
+          padding-left: 17px;
+        }
+        &::before {
+          @include media(map-get($breakpoint, "md")) {
+            left: 0;
+          }
+        }
+      }
+      @include media(map-get($breakpoint, "md")) {
+        flex: 50%;
+      }
+    }
+  }
+}
