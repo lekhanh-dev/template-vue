@@ -23,7 +23,7 @@
           :key="item.id"
           :product="item"
           :selected="getSelectedById(item.id)"
-          @click="handleChecked"
+          @input="handleChecked"
         />
         <div class="footer d-flex flex-jus-c-space-between flex-align-i-center">
           <div>Total product selected: {{ numProductSelected }} Product</div>
@@ -38,7 +38,6 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import ItemProduct from "./ItemProduct.vue";
-
 export default {
   name: "comp-cart",
   components: {
@@ -51,13 +50,17 @@ export default {
     };
   },
   created() {
-    this.listProductStatus = this.getAllProductInCart.map((item) => {
-      return { id: item.id, selected: false };
+    this.getProduct().then(() => {
+      this.listProductStatus = this.getAllProductInCart.map((item) => {
+        return { id: item.id, selected: false };
+      });
     });
   },
   methods: {
-    handleChecked(id) {
-      let product = this.listProductStatus.find((item) => item.id === id);
+    handleChecked(payload) {
+      let product = this.listProductStatus.find(
+        (item) => item.id === payload.id
+      );
       product.selected = !product.selected;
       if (product.selected) {
         this.numProductSelected++;
@@ -66,7 +69,12 @@ export default {
       }
     },
     getSelectedById(id) {
-      return this.listProductStatus.find((item) => item.id === id).selected;
+      const item = this.listProductStatus.find((item) => item.id === id);
+      if (item) {
+        return item.selected;
+      } else {
+        return false;
+      }
     },
     handleAllChecked(checked) {
       this.listProductStatus = this.listProductStatus.map((item) => ({
@@ -77,42 +85,36 @@ export default {
     },
     ...mapActions({
       deleteInCart: "deleteInCart",
+      getProduct: "getProduct",
+      handleAlert: "handleAlert",
     }),
     deleteProduct() {
       if (!this.numProductSelected) {
-        alert("You must select at least one product");
+        this.handleAlert({
+          open: true,
+          message: "You must select at least one product",
+        });
       } else {
-        let idProducts = [];
-        this.listProductStatus.forEach((element) => {
-          if (element.selected) {
-            idProducts.push(element.id);
-          }
-        });
-        this.deleteInCart(idProducts);
+        const products = this.listProductStatus.filter((item) => item.selected);
+        this.deleteInCart(products);
         this.numProductSelected = 0;
-
-        idProducts.forEach((id) => {
-          let index = this.listProductStatus.findIndex(
-            (item) => item.id === id
-          );
-          this.listProductStatus.splice(index, 1);
-        });
+        this.listProductStatus = this.listProductStatus.filter(
+          (item) => !item.selected
+        );
       }
     },
   },
   computed: {
     ...mapGetters(["getAllProductInCart"]),
     selectedAll() {
-      if (!this.listProductStatus.length) {
-        return false;
-      }
-      return (
-        this.listProductStatus.find((item) => !item.selected) === undefined
-      );
+      return !this.listProductStatus.find((item) => !item.selected);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
 @import "../../styles/components/cart/CompCart.scss";
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
 </style>

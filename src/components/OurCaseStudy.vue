@@ -13,75 +13,17 @@
         consequuntur porro nobis?
       </div>
       <div class="our-case-studies__group-btn">
-        <button class="btn ff-montserrat border-rounded-high text-grey">
-          ALL
-        </button>
-        <button class="btn ff-montserrat border-rounded-high text-grey">
-          HOVER BUT
-        </button>
-        <button class="btn ff-montserrat border-rounded-high text-grey">
-          ACTIVE BUT
-        </button>
-        <button class="btn ff-montserrat border-rounded-high text-grey">
-          CATEGORY 3
+        <button
+          class="btn ff-montserrat border-rounded-high text-grey"
+          v-for="(item, index) in buttons"
+          :key="index"
+        >
+          {{ item }}
         </button>
       </div>
       <div class="our-case-studies__group-image">
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image3.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image4.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image2.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image5.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image6.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image7.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="pos-relative">
-          <img
-            class="pos-absolute"
-            src="../assets/img/image8.jpg"
-            alt="image"
-          />
+        <div class="pos-relative" v-for="(item, index) in images" :key="index">
+          <img class="pos-absolute" :src="getLinkImage(item)" alt="image" />
         </div>
       </div>
       <div class="our-case-studies__footer d-flex flex-align-i-center">
@@ -98,8 +40,30 @@
 </template>
 
 <script>
+import { linkImage } from "../config";
 export default {
   name: "our-case-study",
+  data() {
+    return {
+      buttons: ["ALL", "HOVER BUT", " ACTIVE BUT", "CATEGORY 3"],
+      images: [
+        "image1.jpg",
+        "image2.jpg",
+        "image3.jpg",
+        "image4.jpg",
+        "image5.jpg",
+        "image6.jpg",
+        "image7.jpg",
+        "image8.jpg",
+      ],
+    };
+  },
+  methods: {
+    getLinkImage(imageName) {
+      const link = linkImage;
+      return require(`@/${link}/${imageName}`);
+    },
+  },
 };
 </script>
 

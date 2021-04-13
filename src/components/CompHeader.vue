@@ -71,7 +71,9 @@
             <ul
               class="menu__list-nav d-flex flex-dir-column flex-dir-xl-row ff-montserrat pos-relative"
             >
-              <li class="font-weight-bold"><a href="#">HOME</a></li>
+              <li class="font-weight-bold">
+                <router-link to="/"> HOME </router-link>
+              </li>
               <li class="font-weight-bold">
                 <a href="#">PAGES </a>
                 <ul
@@ -167,7 +169,7 @@
             </div>
           </nav>
         </div>
-        <div class="menu__item d-flex flex-align-i-center">
+        <div class="menu__item d-flex flex-align-i-center" @click="goHome">
           <div class="menu__logo">
             <img src="../assets/img/logo.png" alt="logo" />
           </div>
@@ -183,13 +185,24 @@
 
 <script>
 import "../styles/components/CompHeader.scss";
-
+import { mapActions } from "vuex";
 export default {
   name: "comp-header",
   computed: {
     numProductInCart() {
-      return this.$store.state.cart.length;
+      return this.$store.state.cart.products
+        ? this.$store.state.cart.products.length
+        : 0;
     },
+  },
+  methods: {
+    ...mapActions(["getCart"]),
+    goHome() {
+      this.$router.push({ path: "/" });
+    },
+  },
+  created() {
+    this.getCart();
   },
 };
 </script>

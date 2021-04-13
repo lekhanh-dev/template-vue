@@ -1,7 +1,7 @@
 <template>
   <div class="product-item">
     <div class="product-image d-flex flex-jus-c-center">
-      <img :src="getLinkImage(product.image)" alt="product" />
+      <img :src="linkImg" alt="product" />
     </div>
     <div class="product-name">{{ product.name }}</div>
     <div class="label d-flex flex-jus-c-space-between flex-align-i-center">
@@ -15,6 +15,7 @@
 
 <script>
 import { mapActions } from "vuex";
+import { linkImage } from "../../config";
 export default {
   name: "ProductCard",
   props: {
@@ -24,8 +25,11 @@ export default {
     ...mapActions({
       addToCart: "addToCart",
     }),
-    getLinkImage(imageName) {
-      return require(`../../assets/img/${imageName}`);
+  },
+  computed: {
+    linkImg() {
+      const link = linkImage;
+      return require(`@/${link}/${this.product.image}`);
     },
   },
 };

@@ -5,77 +5,11 @@
         <span class="font-weight-bold">WHY</span> CHOOSING US
       </header>
       <div class="why-choose-us__list-item d-flex flex-wrap">
-        <article class="why-choose-us__item">
-          <div class="d-flex flex-align-i-center">
-            <div
-              class="why-choose-us__icon border-rounded-circle bg-grey"
-            ></div>
-            <div class="why-choose-us__title ff-montserrat">LOREM IPSUM</div>
-          </div>
-          <div class="why-choose-us__content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            sit qui eius vitae dolor dignissimos ullam asperiores architecto.
-            Est quae consequatur eaque, molestiae perspiciatis earum
-            voluptatibus autem ab modi aliquam.
-          </div>
-        </article>
-        <article class="why-choose-us__item">
-          <div class="d-flex flex-align-i-center">
-            <div
-              class="why-choose-us__icon border-rounded-circle bg-grey"
-            ></div>
-            <div class="why-choose-us__title ff-montserrat">LOREM IPSUM</div>
-          </div>
-          <div class="why-choose-us__content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            sit qui eius vitae dolor dignissimos ullam asperiores architecto.
-            Est quae consequatur eaque, molestiae perspiciatis earum
-            voluptatibus autem ab modi aliquam.
-          </div>
-        </article>
-        <article class="why-choose-us__item">
-          <div class="d-flex flex-align-i-center">
-            <div
-              class="why-choose-us__icon border-rounded-circle bg-grey"
-            ></div>
-            <div class="why-choose-us__title ff-montserrat">LOREM IPSUM</div>
-          </div>
-          <div class="why-choose-us__content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            sit qui eius vitae dolor dignissimos ullam asperiores architecto.
-            Est quae consequatur eaque, molestiae perspiciatis earum
-            voluptatibus autem ab modi aliquam.
-          </div>
-        </article>
-        <article class="why-choose-us__item">
-          <div class="d-flex flex-align-i-center">
-            <div
-              class="why-choose-us__icon border-rounded-circle bg-grey"
-            ></div>
-            <div class="why-choose-us__title ff-montserrat">LOREM IPSUM</div>
-          </div>
-          <div class="why-choose-us__content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            sit qui eius vitae dolor dignissimos ullam asperiores architecto.
-            Est quae consequatur eaque, molestiae perspiciatis earum
-            voluptatibus autem ab modi aliquam.
-          </div>
-        </article>
-        <article class="why-choose-us__item">
-          <div class="d-flex flex-align-i-center">
-            <div
-              class="why-choose-us__icon border-rounded-circle bg-grey"
-            ></div>
-            <div class="why-choose-us__title ff-montserrat">LOREM IPSUM</div>
-          </div>
-          <div class="why-choose-us__content">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            sit qui eius vitae dolor dignissimos ullam asperiores architecto.
-            Est quae consequatur eaque, molestiae perspiciatis earum
-            voluptatibus autem ab modi aliquam.
-          </div>
-        </article>
-        <article class="why-choose-us__item">
+        <article
+          class="why-choose-us__item"
+          v-for="(item, index) in new Array(6)"
+          :key="index"
+        >
           <div class="d-flex flex-align-i-center">
             <div
               class="why-choose-us__icon border-rounded-circle bg-grey"

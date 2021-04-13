@@ -20,86 +20,18 @@
     <div class="core-competence__list-item bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap">
-          <article class="core-competence__item text-white pos-relative">
+          <article
+            class="core-competence__item text-white pos-relative"
+            v-for="(item, index) in dataArray"
+            :key="index"
+          >
             <div class="core-competence__item-icon pos-relative">
-              <img src="../assets/img/icon9.png" alt="icon" />
+              <img :src="getLinkImage(item.image)" alt="icon" />
             </div>
             <div
               class="core-competence__item-title ff-montserrat font-weight-bold pos-relative"
             >
-              CONSULTING
-            </div>
-            <div class="core-competence__item-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-              molestiae modi mollitia, reiciendis dolore iure assumenda
-              cupiditate tempora illo nesciunt expedita laborum aliquid harum,
-              debitis commodi. Magnam distinctio corrupti soluta!
-            </div>
-            <div class="core-competence__item-button">
-              <button
-                class="btn ff-montserrat border-rounded-high bg-grey text-blue-light"
-              >
-                LEARN MORE
-              </button>
-            </div>
-          </article>
-
-          <article class="core-competence__item text-white pos-relative">
-            <div class="core-competence__item-icon pos-relative">
-              <img src="../assets/img/icon10.png" alt="icon" />
-            </div>
-            <div
-              class="core-competence__item-title ff-montserrat font-weight-bold pos-relative"
-            >
-              PROGRAMMING
-            </div>
-            <div class="core-competence__item-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-              molestiae modi mollitia, reiciendis dolore iure assumenda
-              cupiditate tempora illo nesciunt expedita laborum aliquid harum,
-              debitis commodi. Magnam distinctio corrupti soluta!
-            </div>
-            <div class="core-competence__item-button">
-              <button
-                class="btn ff-montserrat border-rounded-high bg-grey text-blue-light"
-              >
-                LEARN MORE
-              </button>
-            </div>
-          </article>
-
-          <article class="core-competence__item text-white pos-relative">
-            <div class="core-competence__item-icon pos-relative">
-              <img src="../assets/img/icon11.png" alt="icon" />
-            </div>
-            <div
-              class="core-competence__item-title ff-montserrat font-weight-bold pos-relative"
-            >
-              DDEVOLOPMENT
-            </div>
-            <div class="core-competence__item-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-              molestiae modi mollitia, reiciendis dolore iure assumenda
-              cupiditate tempora illo nesciunt expedita laborum aliquid harum,
-              debitis commodi. Magnam distinctio corrupti soluta!
-            </div>
-            <div class="core-competence__item-button">
-              <button
-                class="btn ff-montserrat border-rounded-high bg-grey text-blue-light"
-              >
-                LEARN MORE
-              </button>
-            </div>
-          </article>
-
-          <article class="core-competence__item text-white pos-relative">
-            <div class="core-competence__item-icon pos-relative">
-              <img src="../assets/img/icon12.png" alt="icon" />
-            </div>
-            <div
-              class="core-competence__item-title ff-montserrat font-weight-bold pos-relative"
-            >
-              MARKETING
+              {{ item.title }}
             </div>
             <div class="core-competence__item-content">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
@@ -122,8 +54,25 @@
 </template>
 
 <script>
+import { linkImage } from "../config";
 export default {
   name: "core-competence",
+  data() {
+    return {
+      dataArray: [
+        { title: "CONSULTING", image: "icon9.png" },
+        { title: "PROGRAMMING", image: "icon10.png" },
+        { title: "DDEVOLOPMENT", image: "icon11.png" },
+        { title: "MARKETING", image: "icon12.png" },
+      ],
+    };
+  },
+  methods: {
+    getLinkImage(imageName) {
+      const link = linkImage;
+      return require(`@/${link}/${imageName}`);
+    },
+  },
 };
 </script>
 

@@ -1,121 +1,173 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { getBanner, getProduct, getCart, updateCart } from "../api";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    listImage: ["banner1.png", "banner2.png", "banner3.png"],
-    products: [
-      {
-        id: 1,
-        image: "product1.png",
-        name: "Iphone 12 Pro Max",
-        price: 3000,
-      },
-      {
-        id: 2,
-        image: "product2.png",
-        name: "Iphone 13",
-        price: 6000,
-      },
-      {
-        id: 3,
-        image: "product3.png",
-        name: "Iphone 14",
-        price: 9000,
-      },
-      {
-        id: 4,
-        image: "product4.png",
-        name: "Iphone 15",
-        price: 12000,
-      },
-      {
-        id: 5,
-        image: "product4.png",
-        name: "Iphone 16",
-        price: 24000,
-      },
-      {
-        id: 6,
-        image: "product4.png",
-        name: "Iphone 17",
-        price: 24000,
-      },
-      {
-        id: 7,
-        image: "product4.png",
-        name: "Iphone 18",
-        price: 24000,
-      },
-    ],
-    cart: [
-      { idProduct: 1, num: 3 },
-      { idProduct: 3, num: 5 },
-      { idProduct: 5, num: 10 },
-    ],
+const state = {
+  banners: [],
+  users: [
+    {
+      id: 1,
+      name: "John",
+    },
+    {
+      id: 2,
+      name: "Alice",
+    },
+    {
+      id: 3,
+      name: "Mark",
+    },
+  ],
+  products: [],
+  cart: {},
+  loading: false,
+  alert: { open: false, message: "Hello world" },
+};
+
+const getters = {
+  getNumById: (state) => (id) => {
+    const num = state.cart.products.find((item) => item.id === id).num;
+    if (num) {
+      return num;
+    } else {
+      return 0;
+    }
   },
-  getters: {
-    getNumById: (state) => (id) => {
-      return state.cart.find((item) => item.idProduct === id).num;
-    },
-    getPriceById: (state) => (id) => {
-      return state.products.find((item) => item.id === id).price;
-    },
-    getAllProduct: (state) => {
-      return state.products;
-    },
-    getAllProductInCart: (state) => {
-      let listProduct = [];
-      state.products.forEach((product) => {
-        state.cart.forEach((element) => {
-          if (element.idProduct === product.id) {
-            listProduct.push({ ...product, num: element.num });
-          }
-        });
-      });
-      return listProduct;
-    },
+  getPriceById: (state) => (id) => {
+    const price = state.products.find((item) => item.id === id).price;
+    if (price) {
+      return price;
+    } else {
+      return 0;
+    }
   },
-  mutations: {
-    increment(state, id) {
-      let product = state.cart.find((item) => item.idProduct === id);
+  getAllProductInCart: (state) => {
+    if (state.cart && state.products.length > 0) {
+      return state.cart.products.map((item) => ({
+        ...state.products.find((p) => p.id === item.id),
+        num: item.num,
+      }));
+    } else {
+      return [];
+    }
+  },
+};
+
+const actions = {
+  increment({ commit, state }, id) {
+    commit("loadingUi", true);
+    const cart = JSON.parse(JSON.stringify(state.cart));
+    const product = cart.products.find((item) => item.id === id);
+    if (product) {
       product.num++;
-    },
-    decrease(state, id) {
-      let product = state.cart.find((item) => item.idProduct === id);
-      if (product.num !== 1) {
-        product.num--;
-      }
-    },
-    addToCart(state, id) {
-      let product = state.cart.find((item) => item.idProduct === id);
-      if (product) {
-        alert("Product already have in cart");
+    }
+    updateCart(cart).then((data) => {
+      commit("getCart", data);
+      commit("loadingUi", false);
+    });
+  },
+  decrease({ commit, state }, id) {
+    commit("loadingUi", true);
+    const cart = JSON.parse(JSON.stringify(state.cart));
+    const product = cart.products.find((item) => item.id === id);
+    if (product) {
+      product.num--;
+      if (product.num > 0) {
+        updateCart(cart).then((data) => {
+          commit("getCart", data);
+          commit("loadingUi", false);
+        });
       } else {
-        state.cart.push({ idProduct: id, num: 1 });
+        const productInCart = state.cart.products.filter(
+          (item) => !(item.id === id)
+        );
+        updateCart({ ...state.cart, products: productInCart }).then((data) => {
+          commit("getCart", data);
+          commit("loadingUi", false);
+        });
       }
-    },
-    deleteInCart(state, listId) {
-      listId.forEach((id) => {
-        let index = state.cart.findIndex((item) => item.idProduct === id);
-        state.cart.splice(index, 1);
-      });
-    },
+    } else {
+      commit("loadingUi", false);
+    }
   },
-  actions: {
-    increment({ commit }, id) {
-      commit("increment", id);
-    },
-    decrease({ commit }, id) {
-      commit("decrease", id);
-    },
-    addToCart({ commit }, id) {
-      commit("addToCart", id);
-    },
-    deleteInCart({ commit }, listId) {
-      commit("deleteInCart", listId);
-    },
+  addToCart({ commit }, id) {
+    commit("loadingUi", true);
+    getCart().then((data) => {
+      const item = data.products.find((item) => item.id === id);
+      if (item) {
+        commit("getCart", data);
+        commit("loadingUi", false);
+        commit("updateAlert", {
+          open: true,
+          message: "Product already have in cart",
+        });
+      } else {
+        data.products.push({ id: id, num: 1 });
+        updateCart(data).then(() => {
+          commit("getCart", data);
+          commit("loadingUi", false);
+          commit("updateAlert", {
+            open: true,
+            message: "Product added successful",
+          });
+        });
+      }
+    });
   },
+  getCart({ commit }) {
+    getCart().then((data) => {
+      commit("getCart", data);
+    });
+  },
+  handleAlert({ commit }, payload) {
+    commit("updateAlert", payload);
+  },
+  deleteInCart({ commit, state }, products) {
+    commit("loadingUi", true);
+    const productInCart = state.cart.products.filter(
+      (item) => !products.some((value) => value.id === item.id)
+    );
+    updateCart({ ...state.cart, products: productInCart }).then((data) => {
+      commit("getCart", data);
+      commit("loadingUi", false);
+    });
+  },
+  getBanner({ commit }) {
+    getBanner().then((data) => {
+      commit("getBanner", data);
+    });
+  },
+  getProduct({ commit }) {
+    return getProduct().then((data) => {
+      commit("getProduct", data);
+    });
+  },
+};
+
+const mutations = {
+  updateAlert(state, payload) {
+    state.alert = payload;
+  },
+  loadingUi(state, loading) {
+    state.loading = loading;
+  },
+  getBanner(state, payload) {
+    state.banners = payload;
+  },
+  getProduct(state, payload) {
+    state.products = payload;
+  },
+  getCart(state, payload) {
+    state.cart = payload;
+  },
+};
+
+export default new Vuex.Store({
+  strict: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions,
 });

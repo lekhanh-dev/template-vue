@@ -1,7 +1,11 @@
 <template>
   <div class="item d-flex">
     <div class="wrap-checkbox d-flex flex-align-i-center">
-      <input :checked="selected" @click="handleChecked" type="checkbox" />
+      <input
+        :checked="selected"
+        @change="handleChecked($event.target.checked)"
+        type="checkbox"
+      />
     </div>
     <div class="wrap-name d-flex flex-align-i-center">
       <img class="image" :src="getLinkImage(product.image)" alt="product" />
@@ -18,6 +22,7 @@
 
 <script>
 import CompCounter from "./CompCounter.vue";
+import { linkImage } from "../../config";
 export default {
   name: "item-product",
   components: {
@@ -26,6 +31,7 @@ export default {
   props: {
     product: Object,
     selected: Boolean,
+    value: Object,
   },
   computed: {
     totalForEveryProduct() {
@@ -34,10 +40,15 @@ export default {
   },
   methods: {
     getLinkImage(imageName) {
-      return require(`../../assets/img/${imageName}`);
+      let link = linkImage;
+      return require(`@/${link}/${imageName}`);
     },
-    handleChecked() {
-      this.$emit("click", this.product.id);
+    handleChecked(e) {
+      const payload = {
+        id: this.product.id,
+        selected: e,
+      };
+      this.$emit("input", payload);
     },
   },
 };
@@ -45,4 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../styles/components/cart/ItemProduct.scss";
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
 </style>
